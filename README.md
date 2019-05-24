@@ -36,30 +36,3 @@ The response should be
 Or with real data (assuming you mount the local map directory)
 
     http://localhost:8282/?map=/map/generic.map&layers=GTOPO30_SAMPLE%20airports&mode=map&map_imagetype=png&mapext=14.9688+-10.0312+65.0312+40.0312&imgext=14.9688+-10.0312+65.0312+40.0312&map_size=800+800&imgx=400&imgy=400&imgxy=800+800
-
-    http://localhost:8282/?map=/map/raster.map&layers=tif&mode=map&map_imagetype=png&mapext=3964972.86+3964267.08+4042892.87+4040903.33&imgext=3964972.86+3964267.08+4042892.87+4040903.33&map_size=800+800&imgx=400&imgy=400&imgxy=800+800
-
-    http://localhost:8282/?map=/map/raster.map&service=WMS&request=GetMap&layers=tif&format=image/png&transparent=true&version=1.1.1&srs=EPSG:3857&bbox=3964972.86,3964267.08,4042892.87,4040903.33&width=800&height=800
-
-
-    http://localhost:8282/?map=/map/raster.map&width=72&height=36&layer=tif&version=1.1.1&service=WMS&format=image/png&request=GetLegendGraphic
-
-    url:'https://services.sentinel-hub.com/ogc/wms/cf180083-b3ce-e15e-d0d1-37045122b93c',
-			type:'WMS',
-			zIndex:300,
-			layerOptions:{
-				layers:'TRUE_COLOR',
-				style:'',
-				preset:'CUSTOM',
-				format:'image/jpeg',
-				transparent:true,
-				version:'1.1.1',
-				name:'sentinel2',
-				srs:'EPSG:3857',
-				preview:1,
-				bgcolor:'dddddd',
-				WARNINGS:'NO',
-				showLogo:false,
-				attribution:'&copy; Sentinel Layer',
-				maxcc:100,
-				detectRetina:true
