@@ -1,0 +1,114 @@
+MAP
+    #EXTENT 3964972.86 3964267.08 4042892.87 4040903.33
+    CONFIG "MS_ERRORFILE" "/tmp/raster_map_error.txt"
+    DEBUG 5
+    NAME "RASTER_MAP"
+    SIZE 800 800
+    UNITS meters
+    PROJECTION
+        'init=epsg:3857'
+    END #PROJECTION
+
+    IMAGECOLOR -1 -1 -1
+    IMAGEQUALITY 80
+    IMAGETYPE PNG
+
+    WEB
+        IMAGEPATH '/tmp/'
+        IMAGEURL '/tmp/'
+
+        METADATA
+          'ows_title'           'Test Map'
+          'ows_srs'             'EPSG:3857 EPSG:4326 EPSG:900913'      
+          'wms_feature_info_mime_type' "text/html" 
+          'ows_enable_request'   '*'
+        END 
+    END 
+  
+    LAYER
+      NAME "tif"
+      VALIDATION
+        "productid" "^[a-zA-Z0-9\-_]+"
+      END
+      # EPSG:3857 => 3964972.86 3964267.08 4042892.87 4040903.33
+      #EXTENT 35.6179573 33.5180279 36.3179246 34.0900751
+      #DATA "/data/thisme/MV_S1A_LIBAN-BEEKA_20170908T153241.TIF"
+      DATA "/data/thisme/%productid%.TIF"
+      TYPE RASTER
+      STATUS ON
+      CLASSITEM "[pixel]"
+      PROJECTION
+         "init=epsg:4326"
+      END
+      CLASS
+        EXPRESSION ([pixel] = 0)
+        STYLE 
+          OPACITY 0
+        END
+      END
+      CLASS
+        NAME "0% humidity"
+        EXPRESSION ([pixel] > 0 AND [pixel] <=25) 
+        STYLE 
+          COLOR "#a90005"
+        END
+      END
+      CLASS
+        NAME "5% humidity"
+        EXPRESSION ([pixel] > 25 AND [pixel] <=50) 
+        STYLE 
+          COLOR "#ff0004"
+        END
+      END
+      CLASS
+        NAME "10% humidity"
+        EXPRESSION ([pixel] > 50 AND [pixel] <=75) 
+        STYLE 
+          COLOR "#ff96c6"
+        END
+      END
+      CLASS
+        NAME "15% humidity"
+        EXPRESSION ([pixel] > 75 AND [pixel] <=100) 
+        STYLE 
+          COLOR "#ff9800"
+        END
+      END
+      CLASS
+        NAME "20% humidity"
+        EXPRESSION ([pixel] > 100 AND [pixel] <=125) 
+        STYLE 
+          COLOR "#9fff00"
+        END
+      END
+      CLASS
+        NAME "25% humidity"
+        EXPRESSION ([pixel] > 125 AND [pixel] <=150) 
+        STYLE 
+          COLOR "#2ac82a"
+        END
+      END
+      CLASS
+        NAME "30% humidity"
+        EXPRESSION ([pixel] > 150 AND [pixel] <=175) 
+        STYLE 
+          COLOR "#00bdff"
+        END
+      END
+      CLASS
+        NAME "35% humidity"
+        EXPRESSION ([pixel] > 175 AND [pixel] <=200) 
+        STYLE 
+          COLOR "#0032b3"
+        END
+      END
+      CLASS
+        NAME "40% humidity"
+        EXPRESSION ([pixel] > 200) 
+        STYLE 
+          COLOR "#1d2488"
+        END
+      END
+    END
+
+END 

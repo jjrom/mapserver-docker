@@ -16,8 +16,6 @@ services:
     env_file: 
       - ${ENV_FILE:-config.env}
     environment: 
-      ### Set to 0 in production environment to activate opcache
-      - RESTO_DEBUG_MODE=0
       ### Server configuration (uncomment to change values) 
       #- NGINX_FASTCGI_BUFFERS=8 16k
       #- NGINX_FASTCGI_BUFFER_SIZE=32k
