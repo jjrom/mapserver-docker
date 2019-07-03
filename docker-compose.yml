@@ -2,6 +2,9 @@ version: '2.1'
 networks:
   default:
     driver: bridge
+  external:
+    external:
+      name: rnet
 services:
   mapserver:
     image: jjrom/mapserver:1.0
@@ -11,6 +14,7 @@ services:
       dockerfile: ./Dockerfile
     networks:
       - default
+      - rnet
     ports:
       - ${MAPSERVER_EXPOSED_PORT:-8282}:80
     env_file: 
