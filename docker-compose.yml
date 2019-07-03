@@ -14,7 +14,7 @@ services:
       dockerfile: ./Dockerfile
     networks:
       - default
-      - rnet
+      - external
     ports:
       - ${MAPSERVER_EXPOSED_PORT:-8282}:80
     env_file: 
