@@ -15,7 +15,6 @@ CMD []
 RUN apt-get update && apt-get install -y software-properties-common curl inetutils-syslogd && \
     apt-add-repository ppa:nginx/stable -y && \
     apt-get update && apt-get install -y \
-    php \
     cgi-mapserver \
     mapserver-bin \
     fcgiwrap \
