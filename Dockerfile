@@ -1,7 +1,8 @@
 FROM ubuntu:bionic
 LABEL maintainer="jerome.gasperi@gmail.com"
 
-ENV JUST_CONTAINERS_VERSION=1.22.1.0 \
+ENV DEBIAN_FRONTEND=noninteractive \
+    JUST_CONTAINERS_VERSION=1.22.1.0 \
     ARCH=amd64
 
 # Add S6 supervisor (for graceful stop)
@@ -14,6 +15,7 @@ CMD []
 RUN apt-get update && apt-get install -y software-properties-common curl inetutils-syslogd && \
     apt-add-repository ppa:nginx/stable -y && \
     apt-get update && apt-get install -y \
+    php \
     cgi-mapserver \
     mapserver-bin \
     fcgiwrap \
@@ -28,6 +30,9 @@ RUN chmod 755 /etc/services.d/nginx/run
 # Copy FCGIWRAP service script
 COPY ./start-fcgiwrap.sh /etc/services.d/fcgiwrap/run
 RUN chmod 755 /etc/services.d/fcgiwrap/run
+
+# Copy map scripts
+COPY ./map_manager /usr/lib/cgi-bin/map_manager
 
 # Copy NGINX configuration
 COPY ./container_root/etc/nginx /etc/nginx

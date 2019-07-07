@@ -6,7 +6,24 @@ server {
   
   server_tokens off;
 
-  location / {
+  location ~  ^/wms/(.*)$ {
+    rewrite ^/wms/(.*)$ /_wms?map=/map/$1.map&$args;
+  }
+
+  location /map {
+      add_header 'Access-Control-Allow-Origin' '*';
+      fastcgi_pass unix:/var/run/fcgiwrap.socket;
+      fastcgi_param SCRIPT_FILENAME /usr/lib/cgi-bin/map_manager;
+      fastcgi_buffers 8 16k;
+      fastcgi_buffer_size 32k;
+      fastcgi_busy_buffers_size 32k;
+      fastcgi_connect_timeout 60s;
+      fastcgi_send_timeout 60s;
+      fastcgi_read_timeout 60s;
+      include fastcgi.conf;
+  }
+
+  location = /_wms {
       # allow cross-origin requests to allow http clients (ie. OpenLayers running somewhere) to use GetCapabilities
       add_header 'Access-Control-Allow-Origin' '*';
       fastcgi_pass unix:/var/run/fcgiwrap.socket;
