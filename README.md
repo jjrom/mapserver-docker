@@ -35,7 +35,9 @@ The response should be
 
 Or with real data (assuming you mount the local map directory)
 
-    http://localhost:8282/wms?map=/map/generic.map&layers=GTOPO30_SAMPLE%20airports&mode=map&map_imagetype=png&mapext=14.9688+-10.0312+65.0312+40.0312&imgext=14.9688+-10.0312+65.0312+40.0312&map_size=800+800&imgx=400&imgy=400&imgxy=800+800
+    http://localhost:8282/wms/generic?layers=GTOPO30_SAMPLE%20airports&mode=map&map_imagetype=png&mapext=14.9688+-10.0312+65.0312+40.0312&imgext=14.9688+-10.0312+65.0312+40.0312&map_size=800+800&imgx=400&imgy=400&imgxy=800+800
+
+    http://localhost:8282/wms/geojson?layers=countries,geojson&mode=map&map_imagetype=png&mapext=-90+-180+90+180&width=800&height=800
 
 ## Post mapfile
 

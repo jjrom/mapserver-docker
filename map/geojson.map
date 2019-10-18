@@ -1,0 +1,74 @@
+MAP
+    CONFIG "MS_ERRORFILE" "/tmp/generic_map_error.txt"
+    DEBUG 5
+    NAME "GENERIC_MAP"
+    SIZE 800 800
+    UNITS meters
+    SHAPEPATH  "/map/"
+
+    SYMBOLSET symbolset.txt
+
+    EXTENT 20.0 -10.0 60.0 40.0
+    PROJECTION
+        'init=epsg:4326'
+    END #PROJECTION
+
+    IMAGECOLOR -1 -1 -1
+    IMAGEQUALITY 80
+    IMAGETYPE PNG
+
+    WEB
+        IMAGEPATH '/tmp/'
+        IMAGEURL '/tmp/'
+
+        METADATA
+          'ows_title'           'Test Map'
+          'ows_srs'             'EPSG:3857 EPSG:4326 EPSG:900913'      
+          'wms_feature_info_mime_type' "text/html" 
+          'ows_enable_request'   '*'
+        END 
+    END 
+
+    LAYER
+      GROUP "all"
+      NAME "countries"
+      EXTENT -90 -180 90 180
+      PROJECTION
+         "init=epsg:4326"
+      END
+      DATA 'ne_50m_admin_0_countries/ne_50m_admin_0_countries.shp'
+      STATUS ON
+      TYPE POLYGON
+      CLASS
+        STYLE
+           OUTLINECOLOR 0 0 0
+        END # STYLE
+      END # CLASS
+    END # LAYER
+
+    LAYER
+      GROUP "all"
+      NAME "geojson"
+      EXTENT -90 -180 90 180
+      PROJECTION
+         "init=epsg:4326"
+      END
+      CONNECTIONTYPE OGR
+      CONNECTION "example.geojson"
+      #DATA "OGRGeoJSON"
+      STATUS ON
+      TYPE POLYGON
+      CLASS
+        STYLE
+           WIDTH 2
+           OUTLINECOLOR 255 0 0
+           COLOR 255 0 0 
+           OPACITY 50
+        END # STYLE
+      END # CLASS
+    END # LAYER
+    
+
+END 
+
+
