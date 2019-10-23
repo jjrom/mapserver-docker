@@ -41,7 +41,7 @@ MAP
       TYPE POLYGON
       CLASS
         STYLE
-           OUTLINECOLOR 0 0 0
+           OUTLINECOLOR 152 152 152
         END # STYLE
       END # CLASS
     END # LAYER
@@ -63,9 +63,9 @@ MAP
       CONNECTIONTYPE POSTGIS
       STATUS ON
       TYPE POLYGON
-      LABELITEM gid
       CLASS
-        TEXT '%column% : %gid%'
+        TEXT '%gid% (ORIGINAL)'
+        EXPRESSION ('%column%' eq 'wkt')
         STYLE
            WIDTH 2
            OUTLINECOLOR 255 0 0
@@ -77,7 +77,43 @@ MAP
           OUTLINECOLOR 255 255 255
           TYPE truetype
           SIZE 30
-          POSITION AUTO
+          POSITION ll
+          PARTIALS FALSE
+        END
+      END # CLASS
+      CLASS
+        TEXT '%gid% (SPLIT)'
+        EXPRESSION ('%column%' eq 'wkt_split')
+        STYLE
+           WIDTH 2
+           OUTLINECOLOR 0 255 0
+           COLOR 0 255 0 
+           OPACITY 50
+        END # STYLE
+        LABEL
+          COLOR  0 0 0
+          OUTLINECOLOR 255 255 255
+          TYPE truetype
+          SIZE 30
+          POSITION ll
+          PARTIALS FALSE
+        END
+      END # CLASS
+      CLASS
+        TEXT '%gid% (ESA SPLIT)'
+        EXPRESSION ('%column%' eq 'wkt_esa')
+        STYLE
+           WIDTH 2
+           OUTLINECOLOR 0 0 255
+           COLOR 0 0 255 
+           OPACITY 50
+        END # STYLE
+        LABEL
+          COLOR  0 0 0
+          OUTLINECOLOR 255 255 255
+          TYPE truetype
+          SIZE 30
+          POSITION ll
           PARTIALS FALSE
         END
       END # CLASS
