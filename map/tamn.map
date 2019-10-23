@@ -57,22 +57,31 @@ MAP
           "gid"     "^[0-9]+$"
           "column" "^[a-z_]+$"
       END
-      DATA "wkt FROM (SELECT %column% as wkt,id FROM split_test WHERE gid=%gid%) AS foo using unique id using srid = 4326"
+      DATA "wkt FROM (SELECT %column% as wkt,gid FROM split_test WHERE gid=%gid%) AS foo using unique gid using srid = 4326"
       CONNECTION "user=postgres password=postgres dbname=tamn host=host.docker.internal port=3332"
       PROCESSING "CLOSE_CONNECTION=DEFER"
       CONNECTIONTYPE POSTGIS
       STATUS ON
       TYPE POLYGON
+      LABELITEM gid
       CLASS
+        TEXT '%column% : %gid%'
         STYLE
            WIDTH 2
            OUTLINECOLOR 255 0 0
            COLOR 255 0 0 
            OPACITY 50
         END # STYLE
+        LABEL
+          COLOR  0 0 0
+          OUTLINECOLOR 255 255 255
+          TYPE truetype
+          SIZE 30
+          POSITION AUTO
+          PARTIALS FALSE
+        END
       END # CLASS
     END # LAYER
-    
 
 END 
 
