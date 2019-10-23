@@ -37,7 +37,11 @@ Or with real data (assuming you mount the local map directory)
 
     http://localhost:8282/wms/generic?layers=GTOPO30_SAMPLE%20airports&mode=map&map_imagetype=png&mapext=14.9688+-10.0312+65.0312+40.0312&imgext=14.9688+-10.0312+65.0312+40.0312&map_size=800+800&imgx=400&imgy=400&imgxy=800+800
 
-    http://localhost:8282/wms/geojson?layers=countries,geojson&mode=map&map_imagetype=png&mapext=-90+-180+90+180&width=800&height=800
+    http://localhost:8282/wms/geojson?layers=countries%20geojson&mode=map&map_imagetype=png&mapext=-90+-180+90+180&width=800&height=800
+
+    http://localhost:8282/wms/geojson?service=wms&request=GetMap&version=1.3.0&layers=countries,geojson&format=image/png&crs=epsg:3857&bbox=-20026376.39,-20048966.10,20026376.39,25048966.10&width=800&height=800
+
+    http://localhost:8282/wms/tamn?service=wms&request=GetMap&version=1.3.0&layers=all&format=image/png&crs=epsg:3857&bbox=-20026376.39,-20048966.10,20026376.39,25048966.10&width=800&height=800&column=wkt&gid=1
 
 ## Post mapfile
 

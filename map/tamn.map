@@ -1,0 +1,79 @@
+MAP
+    CONFIG "MS_ERRORFILE" "/tmp/generic_map_error.txt"
+    DEBUG 5
+    NAME "GENERIC_MAP"
+    SIZE 800 800
+    UNITS meters
+    SHAPEPATH  "/map/"
+
+    SYMBOLSET symbolset.txt
+
+    EXTENT 20.0 -10.0 60.0 40.0
+    PROJECTION
+        'init=epsg:4326'
+    END #PROJECTION
+
+    IMAGECOLOR -1 -1 -1
+    IMAGEQUALITY 80
+    IMAGETYPE PNG
+
+    WEB
+        IMAGEPATH '/tmp/'
+        IMAGEURL '/tmp/'
+
+        METADATA
+          'ows_title'           'Test Map'
+          'ows_srs'             'EPSG:3857 EPSG:4326 EPSG:900913'      
+          'wms_feature_info_mime_type' "text/html" 
+          'ows_enable_request'   '*'
+        END 
+    END 
+
+    LAYER
+      GROUP "all"
+      NAME "countries"
+      EXTENT -90 -180 90 180
+      PROJECTION
+         "init=epsg:4326"
+      END
+      DATA 'ne_50m_admin_0_countries/ne_50m_admin_0_countries.shp'
+      STATUS ON
+      TYPE POLYGON
+      CLASS
+        STYLE
+           OUTLINECOLOR 0 0 0
+        END # STYLE
+      END # CLASS
+    END # LAYER
+
+    LAYER
+      GROUP "all"
+      NAME "tamn"
+      EXTENT -90 -180 90 180
+      PROJECTION
+         "init=epsg:4326"
+      END
+      VALIDATION
+          "gid"     "^[0-9]+$"
+          "column" "^[a-z_]+$"
+      END
+      DATA "wkt FROM (SELECT %column% as wkt,id FROM split_test WHERE gid=%gid%) AS foo using unique id using srid = 4326"
+      CONNECTION "user=postgres password=postgres dbname=tamn host=host.docker.internal port=3332"
+      PROCESSING "CLOSE_CONNECTION=DEFER"
+      CONNECTIONTYPE POSTGIS
+      STATUS ON
+      TYPE POLYGON
+      CLASS
+        STYLE
+           WIDTH 2
+           OUTLINECOLOR 255 0 0
+           COLOR 255 0 0 
+           OPACITY 50
+        END # STYLE
+      END # CLASS
+    END # LAYER
+    
+
+END 
+
+
