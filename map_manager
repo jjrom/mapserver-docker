@@ -4,6 +4,7 @@
 import os, sys, json
 
 targetMapDir = '/map/tmp/'
+targetEndpointDir = '/wms/tmp/'
 
 HTTPStatus = {
     "OK":200,
@@ -73,7 +74,7 @@ else:
     message = {
         "status":"success",
         "message":"Upload " + mapFileNoExtension,
-        "endpoint": os.environ["PUBLIC_ENDPOINT"] + "/wms/" + mapFileNoExtension
+        "endpoint": os.environ["PUBLIC_ENDPOINT"] + targetEndpointDir + mapFileNoExtension
     }
 
 print("HTTP/1.0 200 OK")
