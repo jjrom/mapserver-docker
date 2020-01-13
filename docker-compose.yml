@@ -33,4 +33,4 @@ services:
       timeout: 5s
     volumes:
       - ${MAPSERVER_MAP_DIRECTORY:-./map}:/map
-      - ${DATA_DIRECTORY}:/data
+      - ${DATA_DIRECTORY:-./data}:/data

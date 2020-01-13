@@ -15,10 +15,9 @@ Launch the following command and go for a coffee break
     docker build -t jjrom/mapserver:1.0 -t jjrom/mapserver:latest .
 
 ## Start container
-
 Using docker-compose (edit config.env to change default environment values)
 
-    docker-compose up -d
+    MAPSERVER_MAP_DIRECTORY=./map DATA_DIRECTORY=./data docker-compose up -d
 
 Using docker
 
