@@ -40,6 +40,7 @@ COPY ./container_root/etc/nginx /etc/nginx
 COPY ./container_root/cont-init.d /etc/cont-init.d
 
 # Map directory
+RUN mkdir /data
 RUN mkdir /map
 
 

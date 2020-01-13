@@ -3,6 +3,8 @@
 
 import os, sys, json
 
+targetMapDir = '/map/tmp/'
+
 HTTPStatus = {
     "OK":200,
     "Unauthorized":401,
@@ -16,11 +18,10 @@ def error(errorMessage):
     print("HTTP/1.0 " + str(code) + " " + errorMessage)
     print("Content-type: application/json")
     print("")
-    message = {
+    print(json.dumps({
         "ErrorMessage":errorMessage,
         "ErrorCode":code
-    }
-    print(json.dumps(message))
+    }))
     quit()
 
 # ----------------------------------------------------------
@@ -52,7 +53,7 @@ if HTTP_AUTHORIZATION[7:len(HTTP_AUTHORIZATION)] != os.environ["ADMIN_TOKEN"]:
 
 # Store map file if not exist
 mapFileNoExtension = os.path.splitext(uriParts[1])[0]
-mapFilePath = '/map/' + mapFileNoExtension + '.map'
+mapFilePath = targetMapDir + mapFileNoExtension + '.map'
 
 # Delete file
 if REQUEST_METHOD == "DELETE":

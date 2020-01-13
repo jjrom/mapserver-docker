@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3.0'
 networks:
   default:
     driver: bridge
@@ -33,3 +33,4 @@ services:
       timeout: 5s
     volumes:
       - ${MAPSERVER_MAP_DIRECTORY:-./map}:/map
+      - ${DATA_DIRECTORY}:/data
