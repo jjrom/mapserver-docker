@@ -6,11 +6,11 @@ server {
   
   server_tokens off;
 
-  location ~  ^/wms/(.*)$ {
-    rewrite ^/wms/(.*)$ /_wms?map=/map/$1.map&$args;
+  location / {
+    try_files $uri /_wms?map=/map/$uri.map&$args;
   }
 
-  location /map {
+  location /map/ {
       add_header 'Access-Control-Allow-Origin' '*';
       fastcgi_pass unix:/var/run/fcgiwrap.socket;
       fastcgi_param SCRIPT_FILENAME /usr/lib/cgi-bin/map_manager;

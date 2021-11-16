@@ -4,7 +4,7 @@
 import os, sys, json
 
 targetMapDir = '/map/tmp/'
-targetEndpointDir = '/wms/tmp/'
+targetEndpointDir = '/tmp/'
 
 HTTPStatus = {
     "OK":200,
