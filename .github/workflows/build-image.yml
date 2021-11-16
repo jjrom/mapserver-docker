@@ -1,9 +1,9 @@
-name: mapserver-docker image
+name: mapserver image
 
 env:
-  IMAGE: mapserver-docker
+  IMAGE: mapserver
   NAME: jjrom
-  REPO: mapserver-docker
+  REPO: mapserver
 
 on:
   push:
