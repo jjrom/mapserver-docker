@@ -1,7 +1,7 @@
 # mapserver-docker
-Docker image for [mapserver](https://mapserver.org) 7.4.3
+Docker image for [mapserver](https://mapserver.org) 8.1-dev
 
-(*OUTPUT=PNG OUTPUT=JPEG OUTPUT=KML SUPPORTS=PROJ SUPPORTS=AGG SUPPORTS=FREETYPE SUPPORTS=CAIRO SUPPORTS=SVG_SYMBOLS SUPPORTS=RSVG SUPPORTS=ICONV SUPPORTS=FRIBIDI SUPPORTS=WMS_SERVER SUPPORTS=WMS_CLIENT SUPPORTS=WFS_SERVER SUPPORTS=WFS_CLIENT SUPPORTS=WCS_SERVER SUPPORTS=SOS_SERVER SUPPORTS=FASTCGI SUPPORTS=THREADS SUPPORTS=GEOS INPUT=JPEG INPUT=POSTGIS INPUT=OGR INPUT=GDAL INPUT=SHAPEFILE*)
+(*MapServer version 8.1-dev OUTPUT=PNG OUTPUT=JPEG OUTPUT=KML SUPPORTS=PROJ SUPPORTS=AGG SUPPORTS=FREETYPE SUPPORTS=CAIRO SUPPORTS=SVG_SYMBOLS SUPPORTS=RSVG SUPPORTS=ICONV SUPPORTS=FRIBIDI SUPPORTS=WMS_SERVER SUPPORTS=WMS_CLIENT SUPPORTS=WFS_SERVER SUPPORTS=WFS_CLIENT SUPPORTS=WCS_SERVER SUPPORTS=SOS_SERVER SUPPORTS=OGCAPI_SERVER SUPPORTS=FASTCGI SUPPORTS=GEOS SUPPORTS=PBF INPUT=JPEG INPUT=POSTGIS INPUT=OGR INPUT=GDAL INPUT=SHAPEFILE INPUT=FLATGEOBUF*)
 
 ## Installation 
 
@@ -16,7 +16,7 @@ Using docker-compose
 
 Using docker
 
-    docker build -t jjrom/mapserver:2.0.0 -t jjrom/mapserver:latest .
+    docker build -t jjrom/mapserver:3.0.0 -t jjrom/mapserver:latest .
 
 ## Start container
 Using docker-compose (edit config.env to change default environment values)
@@ -44,7 +44,7 @@ Or with real data (assuming you mount the local map directory)
 
     http://localhost:8282/geojson?service=wms&request=GetMap&version=1.3.0&layers=countries,geojson&format=image/png&crs=epsg:3857&bbox=-20026376.39,-20048966.10,20026376.39,25048966.10&width=800&height=800
 
-    http://localhost:8282/tamn?service=wms&request=GetMap&version=1.3.0&layers=all&format=image/png&crs=epsg:3857&bbox=-20026376.39,-20048966.10,20026376.39,25048966.10&width=800&height=800&column=wkt&gid=1
+    http://localhost:8282/tamn?service=wms&request=GetMap&version=1.3.0&layers=tamn&format=image/png&crs=epsg:3857&bbox=-20026376.39,-20048966.10,20026376.39,25048966.10&width=800&height=800&column=wkt&gid=1
 
 ## Post mapfile
 

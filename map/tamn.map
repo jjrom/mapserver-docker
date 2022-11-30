@@ -13,9 +13,16 @@ MAP
         'init=epsg:4326'
     END #PROJECTION
 
+    OUTPUTFORMAT
+      NAME "png"
+      DRIVER AGG/PNG
+      MIMETYPE "image/png"
+      IMAGEMODE RGB
+      EXTENSION "png"
+      FORMATOPTION "QUALITY=80"
+    END
+    
     IMAGECOLOR -1 -1 -1
-    IMAGEQUALITY 80
-    IMAGETYPE PNG
 
     WEB
         IMAGEPATH '/tmp/'
@@ -26,6 +33,8 @@ MAP
           'ows_srs'             'EPSG:3857 EPSG:4326 EPSG:900913'      
           'wms_feature_info_mime_type' "text/html" 
           'ows_enable_request'   '*'
+          # Backward compatibility with mapserver < 8.0
+          'wms_allow_getmap_without_styles' 'true'
         END 
     END 
 
