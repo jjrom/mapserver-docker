@@ -6,7 +6,7 @@ MAP
     UNITS meters
     SHAPEPATH  "/data/"
 
-    SYMBOLSET "/map/symbolset.txt"
+    SYMBOLSET "/etc/mapserver/symbolset.txt"
 
     EXTENT 20.0 -10.0 60.0 40.0
     PROJECTION

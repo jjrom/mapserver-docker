@@ -27,10 +27,12 @@ services:
       #- NGINX_FASTCGI_CONNECT_TIMEOUT=60s
       #- NGINX_FASTCGI_SEND_TIMEOUT=60s
       #- NGINX_FASTCGI_READ_TIMEOUT=60s
+      #- MS_DEBUGLEVEL=5
+      #- MS_ERRORFILE=/tmp/mapserver.log
     healthcheck:
       test: ["CMD", "curl", "-f", "http://127.0.0.1"]
       interval: 1m
       timeout: 5s
     volumes:
-      - ${MAPSERVER_MAP_DIRECTORY:-./map}:/map
+      - ${MAPSERVER_MAP_DIRECTORY:-./map}:/etc/mapserver
       - ${DATA_DIRECTORY:-./data}:/data

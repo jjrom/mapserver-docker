@@ -3,7 +3,7 @@
 
 import os, sys, json
 
-targetMapDir = '/map/tmp/'
+targetMapDir = '/etc/mapserver/tmp/'
 targetEndpointDir = '/tmp/'
 
 HTTPStatus = {

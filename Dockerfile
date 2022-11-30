@@ -1,12 +1,13 @@
-FROM jjrom/s6-overlay:focal-1.0.0
+FROM jjrom/s6-overlay:jammy-1.0.0
 LABEL maintainer="jerome.gasperi@gmail.com"
 
 #ENV DEBIAN_FRONTEND=noninteractive
 
 # Add packages
-RUN apt-get update && apt-get install -y software-properties-common curl inetutils-syslogd && \
-    apt-add-repository ppa:nginx/stable -y && \
-    apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y \
+    software-properties-common \
+    curl \
+    inetutils-syslogd \
     cgi-mapserver \
     mapserver-bin \
     fcgiwrap \
@@ -33,6 +34,8 @@ COPY ./app/container_root/cont-init.d /etc/cont-init.d
 
 # Map directory
 RUN mkdir /data
-RUN mkdir /map
+
+# This is mandatory for mapserver > 7.4
+ENV MS_MAP_PATTERN=^\\/etc\\/mapserver\\/([^\\.][-_A-Za-z0-9\\.]+\\/{1})*([-_A-Za-z0-9\\.]+\\.map)$
 
 

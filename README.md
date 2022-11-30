@@ -25,7 +25,7 @@ Using docker-compose (edit config.env to change default environment values)
 
 Using docker
 
-    docker run -d -p 8282:80 -v `pwd`/map:/map jjrom/mapserver
+    docker run -d -p 8282:80 -v `pwd`/map:/etc/mapserver jjrom/mapserver
 
 ## Access container via http
 Open the following URL:
