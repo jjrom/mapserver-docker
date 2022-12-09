@@ -6,7 +6,7 @@ MAP
     UNITS meters
     SHAPEPATH  "/data/"
 
-    SYMBOLSET "/etc/mapserver/symbolset.txt"
+    SYMBOLSET "/map/symbolset.txt"
 
     EXTENT 20.0 -10.0 60.0 40.0
     PROJECTION
@@ -24,17 +24,27 @@ MAP
 
     IMAGECOLOR -1 -1 -1
 
+    OUTPUTFORMAT
+      NAME "application/json"
+      DRIVER "OGR/GEOJSON"
+      MIMETYPE "application/json"
+      FORMATOPTION "FORM=SIMPLE"
+      FORMATOPTION "STORAGE=memory"
+    END
+
     WEB
         IMAGEPATH '/tmp/'
         IMAGEURL '/tmp/'
 
         METADATA
           'ows_title'           'Test Map'
+          'oga_onlineresource'  'http://localhost:8282/geojson/ogcapi' #[OGC API] REQUIRED 
           'ows_srs'             'EPSG:3857 EPSG:4326 EPSG:900913'      
           'wms_feature_info_mime_type' "text/html"
           # Backward compatibility with mapserver < 8.0
           'wms_allow_getmap_without_styles' 'true' 
-          'ows_enable_request'   '*'
+          'ows_enable_request'   '*' #[OGC API] REQUIRED 
+          'oga_html_template_directory' '/etc/mapserver/share/ogcapi/templates/html-bootstrap4/' #[OGC API] REQUIRED
         END 
     END 
 
@@ -53,6 +63,13 @@ MAP
            OUTLINECOLOR 0 0 0
         END # STYLE
       END # CLASS
+      METADATA
+        "ows_title" "Countries" #[OGC API] REQUIRED
+        "ows_abstract" "Countries, NaturalEarth dataset, 2020"
+        "gml_include_items" "all" #[OGC API] REQUIRED
+        "gml_featureid"     "ADM0_A3" #[OGC API] REQUIRED
+      END
+      TEMPLATE "VOID" #[OGC API] REQUIRED
     END # LAYER
 
     LAYER
