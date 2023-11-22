@@ -37,3 +37,10 @@ then
   echo "[nginx-fastcgi] setting fastcgi_read_timeout ${NGINX_FASTCGI_READ_TIMEOUT}"
   sed -i "s/\fastcgi_read_timeout .*;/fastcgi_read_timeout ${NGINX_FASTCGI_READ_TIMEOUT};/" $CONF_NGINX_SITE
 fi
+
+if [[ $NGINX_USE_CACHE ]]
+then
+  echo "[nginx-fastcgi] enable cache"
+  sed -i "s/fastcgi_no_cache/#fastcgi_no_cache/" $CONF_NGINX_SITE
+  sed -i "s/fastcgi_cache_bypass/#fastcgi_cache_bypass/" $CONF_NGINX_SITE
+fi

@@ -27,6 +27,7 @@ services:
       #- NGINX_FASTCGI_CONNECT_TIMEOUT=60s
       #- NGINX_FASTCGI_SEND_TIMEOUT=60s
       #- NGINX_FASTCGI_READ_TIMEOUT=60s
+      #- NGINX_USE_CACHE=1
     healthcheck:
       test: ["CMD", "curl", "-f", "http://127.0.0.1"]
       interval: 1m
@@ -34,3 +35,4 @@ services:
     volumes:
       - ${MAPSERVER_MAP_DIRECTORY:-./map}:/map
       - ${DATA_DIRECTORY:-./data}:/data
+      - ${CACHE_DIRECTORY:-./cache}:/var/cache/nginx
