@@ -7,7 +7,7 @@ networks:
       name: rnet
 services:
   mapserver:
-    image: jjrom/mapserver:latest
+    image: jjrom/mapserver:2.0.2
     restart: always
     build:
       context: ./
