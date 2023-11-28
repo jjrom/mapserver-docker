@@ -44,7 +44,7 @@ Or with real data (assuming you mount the local map directory)
 
     http://localhost:8282/geojson?service=wms&request=GetMap&version=1.3.0&layers=countries,geojson&format=image/png&crs=epsg:3857&bbox=-20026376.39,-20048966.10,20026376.39,25048966.10&width=800&height=800
 
-    http://localhost:8282/tamn?service=wms&request=GetMap&version=1.3.0&layers=all&format=image/png&crs=epsg:3857&bbox=-20026376.39,-20048966.10,20026376.39,25048966.10&width=800&height=800&column=wkt&gid=1
+    http://localhost:8282/tamn?service=wms&request=GetMap&version=1.3.0&layers=tamn&format=image/png&crs=epsg:3857&bbox=-20026376.39,-20048966.10,20026376.39,25048966.10&width=800&height=800&column=wkt&gid=1
 
 ## Post mapfile
 

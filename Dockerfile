@@ -1,4 +1,4 @@
-FROM jjrom/s6-overlay:focal-1.0.0
+FROM jjrom/s6-overlay:3.1.6.2-mantic
 LABEL maintainer="jerome.gasperi@gmail.com"
 
 #ENV DEBIAN_FRONTEND=noninteractive
@@ -32,6 +32,9 @@ COPY ./app/container_root/etc/nginx /etc/nginx
 
 # Copy run.d configuration
 COPY ./app/container_root/cont-init.d /etc/cont-init.d
+
+# Mapserver >= 8 must provide a config file
+COPY ./mapserver.conf /etc/mapserver.conf
 
 # Map directory
 RUN mkdir /data

@@ -13,9 +13,24 @@ MAP
         'init=epsg:4326'
     END #PROJECTION
 
+    OUTPUTFORMAT
+      NAME "png"
+      DRIVER AGG/PNG
+      MIMETYPE "image/png"
+      IMAGEMODE RGB
+      EXTENSION "png"
+      FORMATOPTION "QUALITY=80"
+    END
+
+    OUTPUTFORMAT
+      NAME "application/json"
+      DRIVER "OGR/GEOJSON"
+      MIMETYPE "application/json"
+      FORMATOPTION "FORM=SIMPLE"
+      FORMATOPTION "STORAGE=memory"
+    END
+
     IMAGECOLOR -1 -1 -1
-    IMAGEQUALITY 80
-    IMAGETYPE PNG
 
     WEB
         IMAGEPATH '/tmp/'
@@ -23,9 +38,11 @@ MAP
 
         METADATA
           'ows_title'           'Test Map'
+          'oga_onlineresource'  'http://localhost:8282/tamn/ogcapi' #[OGC API] REQUIRED 
           'ows_srs'             'EPSG:3857 EPSG:4326 EPSG:900913'      
           'wms_feature_info_mime_type' "text/html" 
-          'ows_enable_request'   '*'
+          'ows_enable_request'   '*' #[OGC API] REQUIRED 
+          'oga_html_template_directory' '/etc/mapserver/share/ogcapi/templates/html-bootstrap4/' #[OGC API] REQUIRED
         END 
     END 
 
@@ -119,7 +136,7 @@ MAP
     END # LAYER
 
     LAYER
-      #GROUP "tamn"
+      GROUP "tamn"
       NAME "tamn_label"
       TYPE POINT
       FEATURE

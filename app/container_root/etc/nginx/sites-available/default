@@ -7,7 +7,7 @@ server {
   server_tokens off;
 
   location / {
-    try_files $uri /_wms?map=/map/$uri.map&$args;
+    try_files $uri /_wms?map=/map$uri.map&$args;
   }
 
   location /map/ {

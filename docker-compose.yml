@@ -33,6 +33,7 @@ services:
       interval: 1m
       timeout: 5s
     volumes:
+      - ./mapserver.conf:/etc/mapserver.conf
       - ${MAPSERVER_MAP_DIRECTORY:-./map}:/map
       - ${DATA_DIRECTORY:-./data}:/data
       - ${CACHE_DIRECTORY:-./cache}:/var/cache/nginx
