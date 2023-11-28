@@ -16,7 +16,7 @@ Using docker-compose
 
 Using docker
 
-    docker build -t jjrom/mapserver:2.0.0 -t jjrom/mapserver:latest .
+    docker build -t jjrom/mapserver:2.0.3 -t jjrom/mapserver:latest .
 
 ## Start container
 Using docker-compose (edit config.env to change default environment values)

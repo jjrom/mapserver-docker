@@ -4,9 +4,11 @@ LABEL maintainer="jerome.gasperi@gmail.com"
 #ENV DEBIAN_FRONTEND=noninteractive
 
 # Add packages
-RUN apt-get update && apt-get install -y software-properties-common curl inetutils-syslogd && \
-    apt-add-repository ppa:nginx/stable -y && \
-    apt-get update && apt-get install -y \
+RUN apt-get update && \
+    apt-get install -y \
+    software-properties-common \
+    curl \
+    inetutils-syslogd \
     cgi-mapserver \
     mapserver-bin \
     fcgiwrap \
